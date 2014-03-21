@@ -25,8 +25,11 @@ posting news/events
 1. if you see something going on, you can post quickly and easily (must be registered and logged in though). It owuld be nice to be able to add a photo, headline, body copy and select categories (through set categories? or make this organic?). Geolocation needs to also be saved (it's the whole point!)
 2. if you see something and someone has already posted it, the system should prompt you to update the previous post instead of posting new
 
-Resources
+Resources - Gems
 ---------
-will rely on a geolocation gem - http://www.rubygeocoder.com/ - allows use of lat/long
+GeoCoder
+saving locations and refering to locations will rely on a geolocation gem - http://www.rubygeocoder.com/ - allows use of lat/long
+GoogleMapsForRails
+presenting info on a map will require somehting like - https://github.com/apneadiving/Google-Maps-for-Rails - which promises custom map presentation, multiple markers etc.
 
 
