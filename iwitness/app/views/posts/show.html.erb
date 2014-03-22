@@ -1,0 +1,30 @@
+<h1><%= @post.title %></h1>
+<h4><%= @post.address %></h4>
+<p>Lat:<%= @post.latitude %> Lon:<%= @post.longitude %></p>
+<section><%= @post.body %></section>
+<%= image_tag(@post.image) %>
+<p class="krissnote">
+  add rating for this post as a + or - value and links for this
+</p>
+
+<section id="user_detail">
+  <%= link_to(@post.user.name, user_path(@post.user)) %>
+  <p class="krissnote">add users rating</p>
+  <%= image_tag(@post.user.image) %>
+</section>
+
+<nav id="meta">
+  <ul>
+    <li><%= link_to("Edit Post", edit_post_path(@post)) %></li>
+    <li><%= link_to("Delete Post", @post, :confirm => "Are you sure you want to delete Post #{@post.title.upcase}?", :method => :delete) %></li>
+    <li><%= link_to("New Post", new_post_path) %></li>
+  </ul>
+</nav>
+
+
+<h2>View News from Categories:</h2>
+<% @post.categories.each do |category| %>
+  <section>
+    <h2><%= link_to(category.title, category) %></h2>
+  </section>
+<% end %>

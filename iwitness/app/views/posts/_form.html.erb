@@ -1,0 +1,23 @@
+<%= form_for @post do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>  
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <% if @post.latitude %>
+    <p>Lat: <%= @post.latitude %> Lon: <%= @post.longitude %></p>
+  <% end %>
+
+  <p><%= f.submit %></p>
+<% end %>
