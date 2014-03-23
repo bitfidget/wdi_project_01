@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.near(session[:address], session[:distance])
   end
 
   def show
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new params[:post]
+    @post.user_id = @current_user.id
     if @post.save
       redirect_to posts_path
     else
