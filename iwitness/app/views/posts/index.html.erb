@@ -1,5 +1,13 @@
-<h1>Posts#index</h1>
-<p>Displaying news items within <%= session[:distance] %>kms of <%= session[:address] %></p>
-<% @posts.each do |post| %>
-  <%= link_to(post.title, post) %>
-<% end %>
+<section id="column-left">
+  <h1>Your Epicentre:<br>
+   <%= session[:address] %></h1>
+  <h2>News radius <%= session[:distance] %>km</h2>
+</section>
+<section id="column-right">
+  <% @posts.each do |post| %>
+    <article class="<%= cycle('even', 'odd') %>">
+      <h2><%= link_to(post.title, post) %><span class="post-rating"></span></h2>
+      <%#= created_at %> at <%#= address %> as reported by <%#= post.user.name %>
+    </article>
+  <% end %>
+</section>

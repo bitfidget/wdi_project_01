@@ -5,6 +5,15 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
+    if @post.rating_up && @post.rating_down
+      @rating = @post.rating_up - @post.rating_down
+    elsif @post.rating_up && !@post.rating_down
+      @rating = @post.rating_up
+    elsif !@post.rating_up && @post.rating_down
+      @rating = @post.rating_down
+    else
+      @rating = "this post has not been rated"
+    end
   end
 
   def new
