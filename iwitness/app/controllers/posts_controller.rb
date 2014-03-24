@@ -3,19 +3,13 @@ class PostsController < ApplicationController
     @posts = Post.near(session[:address], session[:distance])
     session[:latitude] = Geocoder.search(session[:address])[0].latitude
     session[:longitude] = Geocoder.search(session[:address])[0].longitude
+
+    render :layout => 'posts' 
+
   end
 
   def show
     @post = Post.find params[:id]
-    if @post.rating_up && @post.rating_down
-      @rating = @post.rating_up - @post.rating_down
-    elsif @post.rating_up && !@post.rating_down
-      @rating = @post.rating_up
-    elsif !@post.rating_up && @post.rating_down
-      @rating = @post.rating_down
-    else
-      @rating = "this post has not been rated"
-    end
   end
 
   def new

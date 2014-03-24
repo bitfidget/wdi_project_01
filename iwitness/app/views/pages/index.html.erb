@@ -4,14 +4,29 @@
 </section>
 <section id="column-right">
   <div class="inner">
-    <p>Your current location appears to be <%= session[:address] %></p>
-    <p><%= link_to("See What's Happening Around You", posts_path) %></p>
-    <form action="index" method="post">
-      <label for="address">Or enter a diffrent location</label>
-      <input name="address" id="address" type="text" value="<%= session[:address] %>">
-      <label for="distance">Search Radius</label>
-      <input type="number" id="distance" name="distance" value="<%= session[:distance] %>">
-      <button>GO!</button>
-    </form>
+
+    <%= form_tag("/index", method: "post") do %>
+      <%= label_tag(:address, "Your epicentre") %>
+      <%= text_field_tag(:address, session[:address], :autofocus => true)%>
+      <%= label_tag(:distance, "Informational radius") %>
+      <%= range_field_tag(:distance, value = session[:distance], options = {:min => 1, :max => 10})%>
+      <%= submit_tag("Go") %>
+    <% end %>
+
+    <div class="login">  
+      <%== userbox %>
+      <% if !@current_user.present? %>
+        <% if flash[:notice].present? %> 
+          <h2><%= flash[:notice] %></h2> 
+        <% end %>
+        <%= form_tag("/login", method: "post", class: "login") do %>
+          <%= label_tag(:name, "username") %>
+          <%= text_field_tag(:name) %>
+          <%= label_tag(:password, "password") %>
+          <%= password_field_tag(:password) %>
+          <%= submit_tag("Login") %>
+        <% end %>
+      <% end %>
+    </div>  
   </div>
 </section>

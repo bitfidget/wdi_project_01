@@ -18,6 +18,13 @@ h1{
 
 }
 
+.accordion .hide{
+  display: none;
+}
+.accordion h2{
+  cursor: pointer;
+}
+
 
 body.posts h1{
   color: #53A4FF;

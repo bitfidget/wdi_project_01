@@ -10,7 +10,7 @@
   add rating for this user
 </p>
 
-<nav id="meta">
+<nav class="meta">
   <ul>
     <li><%= link_to("Edit user", edit_user_path(@user)) %></li>
     <li><%= link_to("Delete user", @user, :confirm => "Are you sure you want to delete user #{@user.name.upcase}?", :method => :delete) %></li>

@@ -85,6 +85,7 @@ nav{
     }
   }
 
+  
   a{
     display: block;
     height: 27px;
@@ -101,14 +102,36 @@ nav{
     background: rgba(255,255,255,1);
     color: #53A4FF;
     border-bottom: none;
-    height: 30px;
-    margin-bottom: -3px;
     text-decoration: none;
   }
-
+  .info{
+    color: #53A4FF;
+    font-weight: 300;
+    font-style: italic;
+  }
 }
+header nav a:hover{
+  height: 30px;
+  margin-bottom: -3px;
+}
+
+.meta a{
+  height: auto;
+  line-height: 20px;
+  background: rgba(83,164,255,1);
+  padding: 3px 10px;
+  color: #333;
+  border-radius: 5px;
+}
+
 header nav{
   border-bottom: solid 3px #53A4FF;
+  position: relative;
+}
+header nav ul#user{
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 #map-canvas {
@@ -118,14 +141,16 @@ header nav{
   left: 0; 
   bottom: 0;
   right: 0; 
-  z-index: -100;
+  z-index: -1;
 }
 #container {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+  background: #333;
   box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
   display: table;
+  z-index: 0;
 
   section{
     vertical-align: top;
@@ -134,36 +159,43 @@ header nav{
 #column-left{
   width: 63%;
   display: inline-block;
+  z-index: 2;
 }
 #column-right{
   width: 37%;
   display: inline-block;
+  z-index: 2;
 }
 #column-right .inner{
   margin: 20px;
   background: rgba(40,40,40,0.8);
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
   min-height: 500px;
+  z-index: 5;
+  position: relative;
 }
-
-
 
 form{
-  padding: 1em 0;
+  padding: 10px;
 }
 form label{
-  font-size: 80%;
   margin-top: 1em;
   display: block;
 }
 form input{
-  width: 90%;
+  width: 93%;
   display: block;
-  padding: 5%;
+  padding: 5px;
   border-radius: 5px;
   border: none;
   box-shadow: none;
+}
+input[type="submit"]{
+  margin-left: 65%;
+  width: 30%;
+  cursor: pointer;
+  margin-top: 1em;
 }
 
 
