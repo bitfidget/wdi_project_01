@@ -5,3 +5,10 @@ development:
   pool: 5
   username: kriss
   password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: whatsat_production
+  pool: 5
+  password:

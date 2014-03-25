@@ -29,13 +29,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# debugging gems cos they're awesome:
-gem 'protected_attributes' 
-gem 'pry-rails' 
-gem 'pry-debugger' 
-gem 'pry-stack_explorer' 
-gem 'better_errors' 
-gem 'annotate'
+group :development do
+  # debugging gems cos they're awesome:
+  gem 'protected_attributes' 
+  gem 'pry-rails' 
+  gem 'pry-debugger' 
+  gem 'pry-stack_explorer' 
+  gem 'better_errors' 
+  gem 'annotate'
+end
 
 #Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
@@ -43,4 +45,4 @@ gem 'bcrypt-ruby'
 #geocoder
 gem 'geocoder'
 #gmap
-gem 'gmaps4rails'
+#gem 'gmaps4rails'
