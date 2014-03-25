@@ -17,13 +17,14 @@
 
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :image, :address, :latitude, :longitude, :password, :password_confirmation
-  has_many :mixtapes
 
   has_secure_password
   validates :name, :presence => true, :uniqueness => true
   validates :image, :presence => true, :length => { :minimum => 2 }
   
   has_many :posts
+  has_and_belongs_to_many :postvotes, :class_name => "Postvote", :foreign_key => "post_id"
+
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
