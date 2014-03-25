@@ -1,15 +1,16 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.near(session[:address], session[:distance])
+    @posts = Post.near(session[:address], session[:distance], {:units => :km})
     session[:latitude] = Geocoder.search(session[:address])[0].latitude
     session[:longitude] = Geocoder.search(session[:address])[0].longitude
 
-    render :layout => 'posts' 
+    render :layout => 'posts'
 
   end
 
   def show
     @post = Post.find params[:id]
+    render :layout => 'application'
   end
 
   def new
@@ -24,6 +25,19 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def vote
+    @post = Post.find params[:id]
+    if params[:rating_up]
+      @post.rating_up += params[:rating_up].to_i
+    elsif params[:rating_down]
+      @post.rating_down += params[:rating_down].to_i
+    else
+      redirect_to @post
+    end
+    @post.save
+    redirect_to @post
   end
 
   def edit
