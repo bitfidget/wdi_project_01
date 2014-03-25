@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.near(session[:address], session[:distance])
+    session[:latitude] = Geocoder.search(session[:address])[0].latitude
+    session[:longitude] = Geocoder.search(session[:address])[0].longitude
   end
 
   def show

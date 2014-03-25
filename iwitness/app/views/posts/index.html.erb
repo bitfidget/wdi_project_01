@@ -1,13 +1,19 @@
 <section id="column-left">
-  <h1>Your Epicentre:<br>
-   <%= session[:address] %></h1>
-  <h2>News radius <%= session[:distance] %>km</h2>
+  <h1>
+    <span>epicentre:</span><br>
+    <%= session[:address] %><br>
+    <span>alert radius:</span><br>
+    <%= session[:distance] %>km
+  </h2>
 </section>
 <section id="column-right">
-  <% @posts.each do |post| %>
-    <article class="<%= cycle('even', 'odd') %>">
-      <h2><%= link_to(post.title, post) %><span class="post-rating"></span></h2>
-      <%#= created_at %> at <%#= address %> as reported by <%#= post.user.name %>
-    </article>
-  <% end %>
+  <div class="inner">
+    <% @posts.each do |post| %>
+      <article class="<%= cycle('even', 'odd') %>">
+        <h2><%= link_to(post.title, post) %><span class="post-rating"></span></h2>
+        <%#= created_at %> at <%#= address %> as reported by <%= link_to(post.user.name, user_path(post.user)) %>
+      </article>
+    <% end %>
+  </div>
 </section>
+<div id='map-canvas'></div>
