@@ -39,6 +39,8 @@ group :development do
   gem 'annotate'
 end
 
+#we need this for dev server deployment
+gem 'rails_12factor'
 #Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
